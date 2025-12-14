@@ -39,4 +39,12 @@
   font-medium 
   text-white 
   mb-1;
+
+  body {
+    @apply 
+    bg-cover
+    bg-no-repeat
+    bg-[url(/src/assets/jiran.jpg)]
+  }
+}
 }
