@@ -232,4 +232,51 @@
   transition;
 }
 
+/* src/index.css - Member View Visuals */
+.memberview-container {
+  @apply
+  p-6 
+  min-h-[500px]; /* Ensure height for glass effect */
+}
+
+.memberview-search {
+  @apply
+  bg-white/10 
+  border 
+  border-white/30 
+  text-white 
+  placeholder-white/60 
+  px-4 py-2 
+  rounded-[15px] 
+  w-full 
+  md:w-64 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-blue-500 
+  backdrop-blur-sm;
+}
+
+.memberview-card {
+  @apply
+  bg-white/20 
+  backdrop-blur-[30px] 
+  p-5 
+  rounded-[25px] 
+  border 
+  border-white/40 
+  shadow-lg 
+  hover:bg-white/30 
+  transition 
+  duration-300;
+}
+
+.memberview-btn {
+  @apply
+  bg-blue-600 
+  hover:bg-blue-700 
+  py-2 
+  rounded-[10px] 
+  shadow-md 
+  transition;
+}
 
