@@ -50,3 +50,32 @@
   tracking-wide;
 }
 
+/* src/index.css - Payment Board Typography */
+
+.payboard-title {
+  font-family: 'sfb', sans-serif;
+  @apply
+  text-2xl 
+  text-white 
+  tracking-wide;
+}
+
+.payboard-label {
+  @apply
+  text-xs 
+  font-bold 
+  text-white 
+  uppercase 
+  mb-1 
+  pl-1;
+}
+
+/* Button Text Styling */
+.payboard-btn-confirm, 
+.payboard-btn-cancel, 
+.payboard-btn-reminder {
+  @apply
+  font-semibold 
+  text-sm;
+}
+
