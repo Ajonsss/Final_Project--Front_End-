@@ -372,3 +372,89 @@
   rounded-[15px] 
   transition;
 }
+
+/* src/index.css - Registration Board Visuals */
+
+/* --- MAIN GLASS CONTAINER --- */
+.reg-board {
+  @apply
+  bg-white/20 
+  backdrop-blur-[50px]   /* Strong blur for readability */
+  p-8 
+  md:p-10
+  rounded-[40px]         /* Large rounded corners */
+  shadow-2xl 
+  border 
+  border-white/50        /* Semi-transparent white border */
+  w-full 
+  max-w-2xl;
+}
+
+/* --- IMAGE UPLOAD CIRCLE --- */
+.reg-image-upload-wrapper {
+  @apply
+  w-32 h-32 
+  rounded-full           /* Perfect circle */
+  bg-white/5             /* Very subtle background */
+  backdrop-blur-sm
+  border-2 
+  border-dashed          /* Dashed line indicates "Upload" */
+  border-white/50 
+  flex 
+  items-center 
+  justify-center 
+  text-white 
+  cursor-pointer 
+  hover:bg-white/20      /* Lighten on hover */
+  hover:border-white     /* Solid white border on hover */
+  transition-all 
+  duration-300
+  overflow-hidden;       /* Clips the image preview to the circle */
+}
+
+/* --- FORM INPUTS --- */
+.reg-input {
+  @apply
+  w-full 
+  p-3 
+  rounded-[15px]         /* Medium rounded corners */
+  bg-white/20            /* Glass background */
+  text-white 
+  placeholder-white/50   /* Semi-transparent placeholder */
+  border 
+  border-white/30 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-blue-500    /* Blue glow on focus */
+  focus:bg-white/30      /* Slightly lighter on focus */
+  transition;
+}
+
+/* --- ACTION BUTTONS --- */
+.reg-btn-submit {
+  @apply
+  flex-1 
+  bg-green-600 
+  hover:bg-green-500 
+  text-white 
+  font-bold 
+  py-3 
+  rounded-[15px] 
+  shadow-lg 
+  hover:shadow-green-500/30 /* Colored shadow on hover */
+  transition 
+  transform 
+  active:scale-95;       /* Click press effect */
+}
+
+.reg-btn-cancel {
+  @apply
+  px-6 
+  bg-transparent 
+  border 
+  border-white/30 
+  text-white 
+  hover:bg-white/10 
+  rounded-[15px] 
+  transition;
+}
