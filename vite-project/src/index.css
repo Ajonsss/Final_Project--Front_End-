@@ -118,3 +118,20 @@
   border border-white/20;
 }
 
+/* src/index.css - Member View Typography */
+.memberview-title {
+  font-family: 'sfb', sans-serif;
+  @apply
+  text-3xl 
+  text-white;
+}
+
+.memberview-btn {
+  @apply
+  w-full 
+  text-center 
+  text-sm 
+  font-semibold 
+  text-white;
+}
+
