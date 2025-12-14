@@ -40,3 +40,23 @@
   text-white 
   mb-1;
 }
+
+/* src/index.css - Navbar Layout */
+.dashnava {
+  @apply
+  border-b-[1px]
+  max-w-6xl 
+  mx-auto 
+  px-4 
+  py-4 
+  flex 
+  justify-between 
+  items-center;
+}
+
+.dashnava h1 {
+  font-family: 'sfb', sans-serif; /* Font Face */
+  @apply
+  text-[25px]
+  tracking-wide;
+}
