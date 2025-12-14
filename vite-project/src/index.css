@@ -90,3 +90,31 @@
   text-sm;
 }
 
+/* src/index.css - Metrics Typography */
+.metrics-title {
+  font-family: 'sfb', sans-serif;
+  @apply
+  text-xl 
+  text-white 
+  tracking-wide;
+}
+
+.metrics-header {
+  @apply
+  text-xs 
+  font-bold 
+  text-white/60 
+  uppercase 
+  tracking-wider;
+}
+
+.metrics-badge {
+  @apply
+  bg-white/10 
+  text-white 
+  text-xs 
+  px-3 py-1 
+  rounded-full 
+  border border-white/20;
+}
+
