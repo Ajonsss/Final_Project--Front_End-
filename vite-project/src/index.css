@@ -280,3 +280,95 @@
   transition;
 }
 
+/* src/index.css - Registration Board */
+
+.reg-board {
+  @apply
+  bg-white/20 
+  backdrop-blur-[50px] 
+  p-8 
+  rounded-[40px] 
+  shadow-2xl 
+  border 
+  border-white/50 
+  w-full 
+  max-w-2xl;
+}
+
+.reg-title {
+  font-family: 'sfb', sans-serif;
+  @apply
+  text-2xl 
+  text-white 
+  mb-6 
+  text-center;
+}
+
+.reg-label {
+  @apply
+  block 
+  text-xs 
+  font-bold 
+  text-white 
+  uppercase 
+  mb-1 
+  pl-1;
+}
+
+.reg-input {
+  @apply
+  w-full 
+  p-3 
+  rounded-[15px] 
+  bg-white/20 
+  text-white 
+  placeholder-white/50 
+  border 
+  border-white/30 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-blue-500 
+  transition;
+}
+
+.reg-image-upload {
+  @apply
+  w-32 h-32 
+  rounded-full 
+  bg-white/10 
+  border-2 
+  border-dashed 
+  border-white/50 
+  flex 
+  items-center 
+  justify-center 
+  text-white 
+  cursor-pointer 
+  hover:bg-white/20 
+  transition;
+}
+
+.reg-btn-submit {
+  @apply
+  flex-1 
+  bg-green-600 
+  hover:bg-green-700 
+  text-white 
+  font-bold 
+  py-3 
+  rounded-[15px] 
+  shadow-lg 
+  transition;
+}
+
+.reg-btn-cancel {
+  @apply
+  px-6 
+  bg-transparent 
+  border 
+  border-white/30 
+  text-white 
+  hover:bg-white/10 
+  rounded-[15px] 
+  transition;
+}
