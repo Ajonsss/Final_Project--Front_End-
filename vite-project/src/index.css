@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* src/index.css - Typography & Base Settings */
 @font-face {
   font-family: 'sf';
   src: url('./assets/SFPRODISPLAYREGULAR.OTF') format('opentype');
@@ -20,6 +21,24 @@
   html {
     font-family: 'sf', sans-serif;
   }
+}
+
+/* Typography Classes */
+.logintitle {
+  @apply
+  text-2xl 
+  mb-6 
+  text-center 
+  text-white;
+}
+
+.phone, .password {
+  @apply
+  block 
+  text-sm 
+  font-medium 
+  text-white 
+  mb-1;
 
   body {
     @apply 
