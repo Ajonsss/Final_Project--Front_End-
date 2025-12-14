@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* src/index.css - Typography & Base Settings */
 @font-face {
   font-family: 'sf';
   src: url('./assets/SFPRODISPLAYREGULAR.OTF') format('opentype');
@@ -21,25 +20,15 @@
   html {
     font-family: 'sf', sans-serif;
   }
+
+  body {
+    @apply 
+    bg-cover
+    bg-no-repeat
+    bg-[url(/src/assets/jiran.jpg)]
+  }
 }
 
-/* Typography Classes */
-.logintitle {
-  @apply
-  text-2xl 
-  mb-6 
-  text-center 
-  text-white;
-}
-
-.phone, .password {
-  @apply
-  block 
-  text-sm 
-  font-medium 
-  text-white 
-  mb-1;
-}
 
 /* src/index.css - Navbar Layout */
 .dashnava {
@@ -81,13 +70,59 @@
   pl-1;
 }
 
-/* Button Text Styling */
-.payboard-btn-confirm, 
-.payboard-btn-cancel, 
+
+/* src/index.css - Payment Board Visuals */
+
+
+
+.payboard-input {
+  @apply
+  w-full 
+  p-3 
+  rounded-[15px] 
+  bg-white/20 
+  text-white 
+  placeholder-white/50 
+  border 
+  border-white/30 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-blue-500 
+  transition;
+}
+
+/* Button Visuals */
 .payboard-btn-reminder {
   @apply
-  font-semibold 
-  text-sm;
+  bg-yellow-500/80 
+  hover:bg-yellow-600 
+  text-white 
+  px-4 py-2 
+  rounded-[10px] 
+  shadow 
+  transition;
+}
+
+.payboard-btn-confirm {
+  @apply
+  bg-blue-600 
+  hover:bg-blue-700 
+  text-white 
+  px-6 py-2 
+  rounded-[10px] 
+  shadow-lg 
+  transition;
+}
+
+.payboard-btn-cancel {
+  @apply
+  bg-transparent 
+  text-red-300 
+  hover:text-red-100 
+  hover:bg-red-500/20 
+  px-4 py-2 
+  rounded-[10px] 
+  transition;
 }
 
 /* src/index.css - Metrics Typography */
@@ -134,4 +169,67 @@
   font-semibold 
   text-white;
 }
+
+/* src/index.css - Metrics Visuals */
+.metrics-container {
+  @apply
+  bg-white/0 
+  backdrop-blur-[50px] 
+  p-6 
+  rounded-[30px] 
+  shadow-sm 
+  border 
+  border-white/50 
+  w-full 
+  overflow-hidden;
+}
+
+.metrics-row {
+  @apply
+  bg-white/10 
+  hover:bg-white/20 
+  transition 
+  rounded-[15px] 
+  p-4 
+  grid 
+  grid-cols-1 
+  md:grid-cols-7 
+  gap-2 
+  items-center 
+  border 
+  border-white/10;
+}
+
+.metrics-status {
+  @apply
+  px-2 py-1 
+  rounded-[8px] 
+  text-xs 
+  font-bold 
+  uppercase 
+  tracking-wider;
+}
+
+.metrics-btn-view {
+  @apply
+  bg-blue-600/80 
+  hover:bg-blue-600 
+  text-white 
+  text-xs 
+  px-3 py-1.5 
+  rounded-[8px] 
+  transition;
+}
+
+.metrics-btn-remind {
+  @apply
+  bg-orange-500/80 
+  hover:bg-orange-500 
+  text-white 
+  text-xs 
+  px-3 py-1.5 
+  rounded-[8px] 
+  transition;
+}
+
 
