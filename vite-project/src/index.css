@@ -70,29 +70,10 @@
   pl-1;
 }
 
-/* Button Text Styling */
-.payboard-btn-confirm, 
-.payboard-btn-cancel, 
-.payboard-btn-reminder {
-  @apply
-  font-semibold 
-  text-sm;
-}
 
 /* src/index.css - Payment Board Visuals */
 
-.payboard-container {
-  @apply
-  bg-white/0 
-  backdrop-blur-[50px] 
-  p-6 
-  rounded-[30px] 
-  shadow-lg 
-  border 
-  border-white/50 
-  max-w-4xl 
-  mx-auto;
-}
+
 
 .payboard-input {
   @apply
