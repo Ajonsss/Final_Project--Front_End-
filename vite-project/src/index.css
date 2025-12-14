@@ -28,7 +28,7 @@
     bg-[url(/src/assets/jiran.jpg)]
   }
 }
-}
+
 
 /* src/index.css - Navbar Layout */
 .dashnava {
@@ -77,5 +77,70 @@
   @apply
   font-semibold 
   text-sm;
+}
+
+/* src/index.css - Payment Board Visuals */
+
+.payboard-container {
+  @apply
+  bg-white/0 
+  backdrop-blur-[50px] 
+  p-6 
+  rounded-[30px] 
+  shadow-lg 
+  border 
+  border-white/50 
+  max-w-4xl 
+  mx-auto;
+}
+
+.payboard-input {
+  @apply
+  w-full 
+  p-3 
+  rounded-[15px] 
+  bg-white/20 
+  text-white 
+  placeholder-white/50 
+  border 
+  border-white/30 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-blue-500 
+  transition;
+}
+
+/* Button Visuals */
+.payboard-btn-reminder {
+  @apply
+  bg-yellow-500/80 
+  hover:bg-yellow-600 
+  text-white 
+  px-4 py-2 
+  rounded-[10px] 
+  shadow 
+  transition;
+}
+
+.payboard-btn-confirm {
+  @apply
+  bg-blue-600 
+  hover:bg-blue-700 
+  text-white 
+  px-6 py-2 
+  rounded-[10px] 
+  shadow-lg 
+  transition;
+}
+
+.payboard-btn-cancel {
+  @apply
+  bg-transparent 
+  text-red-300 
+  hover:text-red-100 
+  hover:bg-red-500/20 
+  px-4 py-2 
+  rounded-[10px] 
+  transition;
 }
 
