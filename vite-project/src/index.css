@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'sf';
+  src: url('./assets/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sfb';
+  src: url('./assets/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
