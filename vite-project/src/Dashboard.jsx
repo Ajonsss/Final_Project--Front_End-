@@ -148,8 +148,8 @@ function Dashboard() {
                         <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
                             <div><h2 className='dashtitle'>Admin Dashboard</h2><p className='dashp'>Manage your cluster members below.</p></div>
                             <div className='flex flex-col gap-3 w-full md:w-auto'>
-                                <div className='flex gap-2'><input type="password" placeholder="New Admin Password" className='dashadpw' value={newPassword} onChange={e => setNewPassword(e.target.value)} /><button onClick={handleResetAdminPassword} className='bg-white/0 border border-white hover:bg-red-600 text-white px-4 py-2 rounded-[10px] shadow transition text-sm whitespace-nowrap'>Reset PW</button></div>
                                 <div className='flex gap-2'><input type="text" placeholder="New Phone Number" className='dashadpw' value={newPhone} onChange={e => setNewPhone(e.target.value)} /><button onClick={handleUpdateAdminPhone} className='bg-white/0 border border-white hover:bg-green-600 text-white px-4 py-2 rounded-[10px] shadow transition text-sm whitespace-nowrap'>Update Phone</button></div>
+                                <div className='flex gap-2'><input type="password" placeholder="New Admin Password" className='dashadpw' value={newPassword} onChange={e => setNewPassword(e.target.value)} /><button onClick={handleResetAdminPassword} className='bg-white/0 border border-white hover:bg-red-600 text-white px-4 py-2 rounded-[10px] shadow transition text-sm whitespace-nowrap'>Reset PW</button></div>
                             </div>
                         </div>
                     ) : (
