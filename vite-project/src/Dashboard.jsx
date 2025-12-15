@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-// 1. STATE DECLARATIONS and INITIALIZATIONS
+
 function Dashboard() {
-    
+    // 1. STATE DECLARATIONS
     const [role, setRole] = useState('');
     const [members, setMembers] = useState([]);
     const [records, setRecords] = useState([]);
     const [notifications, setNotifications] = useState([]);
     const [showNotif, setShowNotif] = useState(false);
 
-    // Filter State - filterType can be 'all', 'loan', 'savings', 'insurance'
+    // Filter State
     const [filterType, setFilterType] = useState('all');
 
     // Data State
@@ -26,7 +26,7 @@ function Dashboard() {
     const [newPhone, setNewPhone] = useState('');
     const navigate = useNavigate();
 
-    // 2. USE EFFECT (Fetch Data) - on Component Mount
+    // 2. USE EFFECT (Fetch Data)
     useEffect(() => {
         const storedRole = localStorage.getItem('role');
         const storedId = localStorage.getItem('userId');
@@ -46,7 +46,7 @@ function Dashboard() {
             })
             .catch(err => console.log(err));
 
-        // Fetch Members if Leader is logged in
+        // Fetch Members if Leader
         if (storedRole === 'leader') {
             axios.get('http://localhost:8081/members', { headers: { Authorization: token } })
                 .then(res => setMembers(res.data.Result || []));
