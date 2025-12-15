@@ -2,84 +2,111 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const AddMember = () => {
-    const [formData, setFormData] = useState({
+function AddMember() {
+    const [values, setValues] = useState({
         full_name: '',
-        birthdate: '',
         phone_number: '',
-        spouse_name: '',
-        password: '' // Default password setup
+        password: '',
+        birthdate: '',
+        spouse_name: ''
     });
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(null); 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const data = new FormData();
-        Object.keys(formData).forEach(key => data.append(key, formData[key]));
-        if(file) data.append('image', file);
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
-        // API Call (Logic for Day 14, embedded here for structure)
-        axios.post('http://localhost:8081/create-member', data)
-             .then(res => {
-                 if(res.data.Status === "Success") navigate('/dashboard');
-                 else alert("Error");
-             })
-             .catch(err => console.log(err));
-    };
+        // --- VALIDATION START ---
+        // 1. Check Phone Number (Must be digits only AND exactly 11 chars)
+        if (/[^0-9]/.test(values.phone_number) || values.phone_number.length !== 11) {
+            alert("Error: Phone number must contain exactly 11 numbers.");
+            return;
+        }
+
+        // 2. Check Full Name (Must not contain numbers)
+        if (/\d/.test(values.full_name)) {
+            alert("Error: Name must contain ONLY letters.");
+            return;
+        }
+
+        // 3. Check Spouse Name (Must not contain numbers, if provided)
+        if (values.spouse_name && /\d/.test(values.spouse_name)) {
+            alert("Error: Spouse name must contain ONLY letters.");
+            return;
+        }
+        // --- VALIDATION END ---
+
+        const token = localStorage.getItem('token');
+        
+        const formData = new FormData();
+        formData.append('full_name', values.full_name);
+        formData.append('phone_number', values.phone_number);
+        formData.append('password', values.password);
+        formData.append('birthdate', values.birthdate);
+        formData.append('spouse_name', values.spouse_name);
+        if(file) {
+            formData.append('image', file);
+        }
+
+        axios.post('http://localhost:8081/add-member', formData, {
+            headers: { Authorization: token }
+        })
+        .then(res => {
+            if(res.data.Status === "Success") {
+                alert("Member Added Successfully");
+                navigate('/dashboard');
+            } else {
+                alert("Error: " + res.data.Error);
+            }
+        })
+        .catch(err => console.log(err));
+    }
 
     return (
-        <div className="flex justify-center items-center min-h-screen p-4">
-            <div className="reg-board">
-                <h2 className="reg-title">Register New Member</h2>
+        <div className='min-h-screen flex justify-center items-center bg-gray-50/0 p-4'>
+            <div className='bg-white/0 backdrop-blur-[50px] p-8 rounded-[30px] shadow-lg w-full max-w-md border border-white/50 relative'>
+                <div className='flex justify-between items-center mb-6'>
+                    <h2 className='text-2xl font-bold text-white'>Add New Member</h2>
+                    <button onClick={() => navigate('/dashboard')} className='text-white/70 hover:text-white text-xl font-bold transition'>✕</button>
+                </div>
                 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* Image Upload */}
-                    <div className="flex justify-center mb-4">
-                        <label className="reg-image-upload">
-                            {file ? <span className="text-sm">{file.name}</span> : <span>+ Upload Photo</span>}
-                            <input type="file" className="hidden" onChange={e => setFile(e.target.files[0])} />
-                        </label>
+                <form onSubmit={handleSubmit} className='space-y-4'>
+                    <div>
+                        <label className='block text-xs font-bold text-white uppercase mb-1'>Full Name</label>
+                        <input type="text" className='w-full p-3 border border-white/30 rounded-[15px] bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition' required placeholder="Juan Dela Cruz" onChange={e => setValues({...values, full_name: e.target.value})} />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label className="reg-label">Full Name</label>
-                            <input type="text" className="reg-input" 
-                                onChange={e => setFormData({...formData, full_name: e.target.value})} required/>
+                    <div>
+                        <label className='block text-xs font-bold text-white uppercase mb-1'>Profile Picture</label>
+                        <input type="file" className='w-full p-2 border border-white/30 rounded-[15px] bg-white/10 text-white file:mr-4 file:py-2 file:px-4 file:rounded-[10px] file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer' onChange={e => setFile(e.target.files[0])} />
+                    </div>
+
+                    <div className='flex gap-3'>
+                        <div className='w-1/2'>
+                            <label className='block text-xs font-bold text-white uppercase mb-1'>Birthdate</label>
+                            <input type="date" className='w-full p-3 border border-white/30 rounded-[15px] bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500' required onChange={e => setValues({...values, birthdate: e.target.value})} />
                         </div>
-                        <div>
-                            <label className="reg-label">Phone Number</label>
-                            <input type="text" className="reg-input" 
-                                onChange={e => setFormData({...formData, phone_number: e.target.value})} required/>
+                        <div className='w-1/2'>
+                            <label className='block text-xs font-bold text-white uppercase mb-1'>Spouse Name</label>
+                            <input type="text" className='w-full p-3 border border-white/30 rounded-[15px] bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500' placeholder='Optional' onChange={e => setValues({...values, spouse_name: e.target.value})} />
                         </div>
-                        <div>
-                            <label className="reg-label">Birthdate</label>
-                            <input type="date" className="reg-input" 
-                                onChange={e => setFormData({...formData, birthdate: e.target.value})} />
-                        </div>
-                        <div>
-                            <label className="reg-label">Spouse Name</label>
-                            <input type="text" className="reg-input" 
-                                onChange={e => setFormData({...formData, spouse_name: e.target.value})} />
-                        </div>
+                    </div>
+
+                    <div>
+                        <label className='block text-xs font-bold text-white uppercase mb-1'>Phone (Login ID)</label>
+                        <input type="text" className='w-full p-3 border border-white/30 rounded-[15px] bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500' required placeholder="09123456789" onChange={e => setValues({...values, phone_number: e.target.value})} />
+                    </div>
+
+                    <div>
+                        <label className='block text-xs font-bold text-white uppercase mb-1'>Password</label>
+                        <input type="password" className='w-full p-3 border border-white/30 rounded-[15px] bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500' required placeholder="••••••••" onChange={e => setValues({...values, password: e.target.value})} />
                     </div>
                     
-                    {/* Default Password Field (Hidden or Visible depending on req) */}
-                    <div>
-                        <label className="reg-label">Default Password</label>
-                        <input type="password" className="reg-input" 
-                            onChange={e => setFormData({...formData, password: e.target.value})} required/>
-                    </div>
-
-                    <div className="flex gap-3 pt-4">
-                        <button type="button" onClick={() => navigate('/dashboard')} className="reg-btn-cancel">Cancel</button>
-                        <button type="submit" className="reg-btn-submit">Create Member</button>
-                    </div>
+                    <button type="submit" className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-[15px] shadow-lg transition duration-200 mt-4'>Register Member</button>
                 </form>
             </div>
         </div>
-    );
+    )
 }
 
 export default AddMember;
